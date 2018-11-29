@@ -1,6 +1,3 @@
-require './card.rb'
-require './deck.rb'
-
 ALL_CARDS = []
 
 Card::SUITS.each do |suit|

@@ -1,5 +1,4 @@
 require 'test/unit'
-require './card.rb'
 
 class CardTest < Test::Unit::TestCase
   def test_initialize_low_ace

@@ -1,8 +1,8 @@
 require 'benchmark'
-require './card.rb'
-require './deck.rb'
-require './full_deck.rb'
-require './poker_hand.rb'
+require './lib/card.rb'
+require './lib/deck.rb'
+require './lib/full_deck.rb'
+require './lib/poker_hand.rb'
 
 # def pair_odd player_cards, community_cards
 #   visible_cards = player_cards + community_cards
@@ -49,5 +49,5 @@ end
 # end
 
 puts Benchmark.measure {
-  500000.times { deal_and_rank }
+  100000.times { deal_and_rank }
 }

@@ -1,6 +1,3 @@
-require './card.rb'
-require './deck.rb'
-
 class PokerHand < Deck
   def initialize cards
     raise 'doesnt have 5 cards' if cards.count != 5

@@ -1,5 +1,4 @@
 require 'test/unit'
-require './poker_hand.rb'
 
 class PokerHandTest < Test::Unit::TestCase
   def test_must_have_5_cards

@@ -1,5 +1,4 @@
 require 'test/unit'
-require './deck.rb'
 
 class DeckTest < Test::Unit::TestCase
   def test_from_str
