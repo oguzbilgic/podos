@@ -28,13 +28,18 @@ require './poker_hand.rb'
 # x = pair_odd player_cards, community_cards
 # puts x
 
-puts Card.from_str "2♦"
+ranks = 100000.times.map do
+  cards = FullDeck.new.deal(5)
+  hand = PokerHand.new cards
+  hand.rank
+end
 
+puts ranks.group_by(&:itself).map { |k,v| [k, v.size]}
 
-cards = FullDeck.new.deal(5)
-p = PokerHand.new cards
-puts cards
-puts 'pair' if p.pair?
-puts 'flush' if p.flush?
-
-puts [2, 2, 1] === [1,2,2]
+  # 1000.times do
+  #   cards = FullDeck.new.deal(5)
+  #   hand = PokerHand.new cards
+  #   if hand.rank != :high_card && hand.rank != :pair
+  #     puts "#{hand.rank} #{hand}"
+  #   end
+  # end
