@@ -1,20 +1,9 @@
-SUIT_SYMBOLS = { club: '♣', heart: '♥', spade: '♠', diamond: '♦' }
-
-def rank_to_string rank
-  case rank
-  when 11 then "J"
-  when 12 then "Q"
-  when 13 then "K"
-  when 14 then "A"
-  else rank
-  end
-end
-
 class Card
   attr_accessor :rank, :suit
 
   RANKS = (2..14)
   SUITS = [:club, :diamond, :heart, :spade]
+  SUIT_SYMBOLS = { club: '♣', heart: '♥', spade: '♠', diamond: '♦' }
 
   def initialize rank, suit
     raise 'rank is not valid' unless RANKS.include? rank
@@ -39,10 +28,18 @@ class Card
     Card.new rank, suit
   end
 
-  def to_s
-    "#{rank_to_string @rank}#{SUIT_SYMBOLS[@suit]}"
+  def rank_to_s
+    return "J" if @rank == 11
+    return "Q" if @rank == 12
+    return "K" if @rank == 13
+    return "A" if @rank == 14
+    @rank
   end
-  
+
+  def to_s
+    "#{rank_to_s}#{@SUIT_SYMBOLS[@suit]}"
+  end
+
   # def == other_card
   #   other_card.rank == @rank && other_card.suit == @suit
   # end
