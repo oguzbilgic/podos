@@ -1,18 +1,12 @@
 SUIT_SYMBOLS = { club: '♣', heart: '♥', spade: '♠', diamond: '♦' }
 
-# TODO
 def rank_to_string rank
   case rank
-  when 11
-    "J"
-  when 12
-    "Q"
-  when 13
-    "K"
-  when 14
-    "A"
-  else
-    rank
+  when 11 then "J"
+  when 12 then "Q"
+  when 13 then "K"
+  when 14 then "A"
+  else rank
   end
 end
 
@@ -48,16 +42,8 @@ class Card
   def to_s
     "#{rank_to_string @rank}#{SUIT_SYMBOLS[@suit]}"
   end
-
-  def == other_card
-    other_card.rank == @rank && other_card.suit == @suit
-  end
-
-  def eql? other_card
-    other_card.rank == @rank && other_card.suit == @suit
-  end
-
-  def hash
-    "#{@rank}#{@suit}"
-  end
+  
+  # def == other_card
+  #   other_card.rank == @rank && other_card.suit == @suit
+  # end
 end
