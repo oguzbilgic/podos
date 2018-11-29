@@ -21,6 +21,9 @@ class PokerHand < Deck
   end
 
   def royal_flush?
+    max_ace = @cards.map(&:rank).max == 14
+
+    max_ace && straight_flush?
   end
 
   def straight_flush?

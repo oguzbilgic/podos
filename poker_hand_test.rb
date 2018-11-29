@@ -8,6 +8,23 @@ class PokerHandTest < Test::Unit::TestCase
     assert_raises { PokerHand.from_str '2♦ 9♦ Q♣ K♣ 7♠ 7♠' }
   end
 
+  def test_royal_flush
+    assert_true PokerHand.from_str('K♣ A♣ Q♣ 10♣ J♣').royal_flush?
+  end
+
+  def test_straight_flush
+    assert_true PokerHand.from_str('4♦ 6♦ 7♦ 5♦ 8♦').straight_flush?
+  end
+
+  def test_four_of_a_kind
+  end
+
+  def test_full_house
+  end
+
+  def test_flush
+  end
+
   def test_straight
     assert_true PokerHand.from_str('5♣ 7♠ 9♣ 8♦ 6♣').straight?
     assert_true PokerHand.from_str('K♠ J♠ 10♠ Q♣ 9♣').straight?
@@ -21,6 +38,7 @@ class PokerHandTest < Test::Unit::TestCase
   end
 
   def test_two_pair
+    assert_true PokerHand.from_str('2♦ J♦ J♣ Q♦ 2♣').two_pair?
   end
 
   def test_pair
