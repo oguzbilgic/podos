@@ -43,6 +43,10 @@ class PokerHandTest < Test::Unit::TestCase
     assert_true PokerHand.from_str('6♦ 7♣ 3♥ 5♣ 4♠').straight?
   end
 
+  def test_straight_low_ace
+    assert_true PokerHand.from_str('A♣ 2♠ 3♣ 4♦ 5♣').straight?
+  end
+
   def test_three_of_a_kind
     assert_true PokerHand.from_str('2♦ J♦ A♣ 2♦ 2♣').three_of_a_kind?
     assert_false PokerHand.from_str('2♦ J♦ A♣ Q♦ 2♣').three_of_a_kind?
