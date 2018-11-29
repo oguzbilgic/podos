@@ -8,19 +8,23 @@ class PokerHandTest < Test::Unit::TestCase
     assert_raises { PokerHand.from_str '2♦ 9♦ Q♣ K♣ 7♠ 7♠' }
   end
 
-  def test_pair
-    pair = '2♦ J♦ A♣ Q♦ 2♣'
-    not_pair = '2♦ J♦ A♣ Q♦ 3♣'
-
-    assert_true PokerHand.from_str(pair).pair?
-    assert_false PokerHand.from_str(not_pair).pair?
+  def test_straight
+    assert_true PokerHand.from_str('5♣ 7♠ 9♣ 8♦ 6♣').straight?
+    assert_true PokerHand.from_str('K♠ J♠ 10♠ Q♣ 9♣').straight?
+    assert_true PokerHand.from_str('9♠ J♦ 8♦ 10♠ 7♦').straight?
+    assert_true PokerHand.from_str('6♦ 7♣ 3♥ 5♣ 4♠').straight?
   end
 
   def test_three_of_a_kind
-    three_of_a_kind = '2♦ J♦ A♣ 2♦ 2♣'
-    not_three_of_a_kind = '2♦ J♦ A♣ Q♦ 2♣'
+    assert_true PokerHand.from_str('2♦ J♦ A♣ 2♦ 2♣').three_of_a_kind?
+    assert_false PokerHand.from_str('2♦ J♦ A♣ Q♦ 2♣').three_of_a_kind?
+  end
 
-    assert_true PokerHand.from_str(three_of_a_kind).three_of_a_kind?
-    assert_false PokerHand.from_str(not_three_of_a_kind).three_of_a_kind?
+  def test_two_pair
+  end
+
+  def test_pair
+    assert_true PokerHand.from_str('2♦ J♦ A♣ Q♦ 2♣').pair?
+    assert_false PokerHand.from_str('2♦ J♦ A♣ Q♦ 3♣').pair?
   end
 end

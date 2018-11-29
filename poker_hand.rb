@@ -42,6 +42,11 @@ class PokerHand < Deck
   end
 
   def straight?
+    no_pairs = @cards.map(&:rank).uniq.count == 5
+    max = @cards.map(&:rank).max
+    min = @cards.map(&:rank).min
+
+    no_pairs && (max - min) == 4
   end
 
   def three_of_a_kind?
