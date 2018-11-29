@@ -2,6 +2,10 @@ require 'test/unit'
 require './card.rb'
 
 class CardTest < Test::Unit::TestCase
+  def test_initialize_low_ace
+    assert_raises { Card.new(1, :diamond) }
+  end
+
   def test_from_str
     assert_equal :diamond, Card.from_str('2♦').suit
     assert_equal 2, Card.from_str('2♦').rank
@@ -20,6 +24,7 @@ class CardTest < Test::Unit::TestCase
   end
 
   def test_from_str_fail
+    assert_raises { Card.from_str('1♦') }
     assert_raises { Card.from_str('sdf') }
     assert_raises { Card.from_str('22♦') }
     assert_raises { Card.from_str('22') }
