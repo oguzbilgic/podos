@@ -34,6 +34,8 @@ class PokerHandTest < Test::Unit::TestCase
   end
 
   def test_flush
+    assert_true PokerHand.from_str('3♦ 8♦ K♦ A♦ 2♦').flush?
+    assert_true PokerHand.from_str('K♣ A♣ Q♣ 10♣ 3♣').flush?
   end
 
   def test_straight
