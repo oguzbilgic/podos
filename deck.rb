@@ -1,5 +1,4 @@
 require 'forwardable'
-
 require './card.rb'
 
 class Deck

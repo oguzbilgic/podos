@@ -28,18 +28,18 @@ require './poker_hand.rb'
 # x = pair_odd player_cards, community_cards
 # puts x
 
-ranks = 100000.times.map do
+# ranks = 100000.times.map do
+#   cards = FullDeck.new.deal(5)
+#   hand = PokerHand.new cards
+#   hand.rank
+# end
+#
+# puts ranks.group_by(&:itself).map { |k,v| [k, v.size]}
+
+100000.times do
   cards = FullDeck.new.deal(5)
   hand = PokerHand.new cards
-  hand.rank
+  if hand.rank == :four_of_a_kind
+    puts "#{hand.rank} #{hand}"
+  end
 end
-
-puts ranks.group_by(&:itself).map { |k,v| [k, v.size]}
-
-  # 1000.times do
-  #   cards = FullDeck.new.deal(5)
-  #   hand = PokerHand.new cards
-  #   if hand.rank != :high_card && hand.rank != :pair
-  #     puts "#{hand.rank} #{hand}"
-  #   end
-  # end
