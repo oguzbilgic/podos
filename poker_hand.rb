@@ -31,7 +31,7 @@ class PokerHand < Deck
   end
 
   def four_of_a_kind?
-    @cards.group_by(&:rank).values.map(&:count).include? 4
+    card_counts_by_rank.include? 4
   end
 
   def full_house?
@@ -51,14 +51,20 @@ class PokerHand < Deck
   end
 
   def three_of_a_kind?
-    @cards.group_by(&:rank).values.map(&:count).include? 3
+    card_counts_by_rank.include? 3
   end
 
   def two_pair?
-    @cards.group_by(&:rank).values.map(&:count).sort! == [2,2,1].sort!
+    card_counts_by_rank.sort! == [2,2,1].sort!
   end
 
   def pair?
-    @cards.group_by(&:rank).values.map(&:count).include? 2
+    card_counts_by_rank.include? 2
+  end
+
+  protected
+
+  def card_counts_by_rank
+    @card_counts_by_rank ||= @cards.group_by(&:rank).values.map(&:count)
   end
 end

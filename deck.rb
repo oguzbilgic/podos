@@ -19,7 +19,7 @@ class Deck
   end
 
   def deal number
-    number.times.map { @cards.shift }
+    @cards.shift number
   end
 
   # def remove_card(card)

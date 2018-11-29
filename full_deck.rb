@@ -1,15 +1,17 @@
 require './card.rb'
 require './deck.rb'
 
+ALL_CARDS = []
+
+Card::SUITS.each do |suit|
+  Card::RANKS.each do |rank|
+    ALL_CARDS << Card.new(rank, suit)
+  end
+end
+
 class FullDeck < Deck
   def initialize
-    super
-
-    Card::SUITS.each do |suit|
-      Card::RANKS.each do |rank|
-        @cards << Card.new(rank, suit)
-      end
-    end
+    super ALL_CARDS.clone
 
     self.shuffle!
   end
