@@ -17,9 +17,20 @@ class PokerHandTest < Test::Unit::TestCase
   end
 
   def test_four_of_a_kind
+    assert_true PokerHand.from_str('Q♥ 9♦ 9♥ 9♣ 9♠').four_of_a_kind?
+    assert_true PokerHand.from_str('10♣ K♥ 10♥ 10♠ 10♦').four_of_a_kind?
+    assert_true PokerHand.from_str('A♣ 7♣ A♦ A♠ A♥').four_of_a_kind?
+    assert_true PokerHand.from_str('2♥ 2♠ 2♣ 2♦ 3♣').four_of_a_kind?
   end
 
   def test_full_house
+    assert_true PokerHand.from_str('3♥ 3♠ 3♣ A♣ A♦').full_house?
+    assert_true PokerHand.from_str('K♥ 4♣ 4♠ 4♦ K♣').full_house?
+    assert_true PokerHand.from_str('Q♣ Q♠ K♦ Q♦ K♣').full_house?
+    assert_true PokerHand.from_str('K♣ 8♥ K♦ K♥ 8♠').full_house?
+    assert_true PokerHand.from_str('8♥ Q♦ 8♣ Q♠ Q♣').full_house?
+    assert_true PokerHand.from_str('5♦ 9♠ 9♣ 9♥ 5♥').full_house?
+    assert_true PokerHand.from_str('7♣ 3♣ 7♥ 3♠ 7♠').full_house?
   end
 
   def test_flush
