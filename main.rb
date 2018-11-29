@@ -1,3 +1,4 @@
+require 'benchmark'
 require './card.rb'
 require './deck.rb'
 require './full_deck.rb'
@@ -36,10 +37,17 @@ require './poker_hand.rb'
 #
 # puts ranks.group_by(&:itself).map { |k,v| [k, v.size]}
 
-100000.times do
-  cards = FullDeck.new.deal(5)
+def deal_and_rank
+  full_deck = FullDeck.new
+  cards = full_deck.deal(5)
   hand = PokerHand.new cards
-  if hand.rank == :four_of_a_kind
-    puts "#{hand.rank} #{hand}"
-  end
+  hand.rank
 end
+
+# 100000.times do
+#   puts :straight_flush if deal_and_rank == :straight_flush
+# end
+
+puts Benchmark.measure {
+  100000.times { deal_and_rank }
+}
