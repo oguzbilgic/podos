@@ -49,5 +49,5 @@ end
 # end
 
 puts Benchmark.measure {
-  100000.times { deal_and_rank }
+  500000.times { deal_and_rank }
 }

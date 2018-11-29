@@ -21,9 +21,9 @@ class PokerHand < Deck
   end
 
   def royal_flush?
-    max_ace = @cards.map(&:rank).max == 14
+    return unless straight_flush?
 
-    max_ace && straight_flush?
+    @cards.map(&:rank).max == 14
   end
 
   def straight_flush?
@@ -43,11 +43,11 @@ class PokerHand < Deck
   end
 
   def straight?
-    no_pairs = @cards.map(&:rank).uniq.count == 5
-    max = @cards.map(&:rank).max
-    min = @cards.map(&:rank).min
+    return if card_counts_by_rank != [1,1,1,1,1]
 
-    no_pairs && (max - min) == 4
+    card_ranks = @cards.map(&:rank)
+
+    (card_ranks.max - card_ranks.min) == 4
   end
 
   def three_of_a_kind?
@@ -55,7 +55,7 @@ class PokerHand < Deck
   end
 
   def two_pair?
-    card_counts_by_rank.sort! == [2,2,1].sort!
+    card_counts_by_rank == [2,2,1].sort!
   end
 
   def pair?
@@ -65,6 +65,6 @@ class PokerHand < Deck
   protected
 
   def card_counts_by_rank
-    @card_counts_by_rank ||= @cards.group_by(&:rank).values.map(&:count)
+    @card_counts_by_rank ||= @cards.group_by(&:rank).values.map(&:count).sort!
   end
 end
