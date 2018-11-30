@@ -37,7 +37,7 @@ class Card
   end
 
   def to_s
-    "#{rank_to_s}#{@SUIT_SYMBOLS[@suit]}"
+    "#{@rank_to_s}#{@SUIT_SYMBOLS[@suit]}"
   end
 
   # def == other_card
