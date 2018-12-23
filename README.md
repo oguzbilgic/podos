@@ -15,6 +15,13 @@ gem 'podos'
 ```ruby
 require 'podos'
 
+hand = Podos::PokerHand.from_str 'Q♥ 9♦ 9♥ 9♣ 9♠'
+puts hand.full_house?
+```
+
+```ruby
+require 'podos'
+
 full_deck = Podos::FullDeck.new
 cards = full_deck.deal(5)
 hand = Podos::PokerHand.new cards
